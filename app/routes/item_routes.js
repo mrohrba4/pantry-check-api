@@ -29,6 +29,12 @@ const router = express.Router()
 // ############
 
 // INDEX(GET /items)
+router.get('/items', requireToken, (req, res, next) => {
+  Item.find({ owner: req.user.id })
+    .then(items => items.map(item => item.toObject()))
+    .then(items => res.json({ items: items }))
+    .catch(next)
+})
 
 // SHOW(GET /items/:id)
 
