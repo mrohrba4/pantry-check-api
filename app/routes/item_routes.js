@@ -38,7 +38,7 @@ router.post('/items', requireToken, (req, res, next) => {
   req.body.item.owner = req.user.id
 
   // creating the item.
-  Item.create(req.body.example)
+  Item.create(req.body.item)
   // response if successful, 201 and JSON.
     .then(item => {
       res.status(201).json({ item: item.toObject() })
