@@ -30,13 +30,29 @@ const router = express.Router()
 
 // INDEX(GET /items)
 router.get('/items', requireToken, (req, res, next) => {
+  // find items by user/owner
   Item.find({ owner: req.user.id })
+    // mongoose toObject
     .then(items => items.map(item => item.toObject()))
+    // respond with 200 with items to client.
     .then(items => res.json({ items: items }))
+    // if error, run next middleware.
     .catch(next)
 })
 
 // SHOW(GET /items/:id)
+router.get('/items/:id', requireToken, (req, res, next) => {
+  // get id of item from params
+  const id = req.params.id
+  // finding item(by owner)
+  Item.findOne({ _id: id, owner: req.user._id })
+    // send 404 if no item found.
+    .then(handle404)
+    // JSON response
+    .then(item => res.status(200).json({ item: item }))
+    // error catching.
+    .catch(next)
+})
 
 // CREATE(POST /items)
 router.post('/items', requireToken, (req, res, next) => {
