@@ -71,6 +71,15 @@ router.post('/items', requireToken, (req, res, next) => {
 // UPDATE(PATCH /items/:id)
 
 // DESTROY(DELETE /items/id)
+router.delete('/items/:id', requireToken, (req, res, next) => {
+  const id = req.params.id
+  Item.findOne({ _id: id, owner: req.user._id })
+    .then(handle404)
+    .then(item => item.deleteOne())
+    // send back 204 and no content if succeeded.
+    .then(() => res.sendStatus(204))
+    .catch(next)
+})
 
 // Exporting
 
