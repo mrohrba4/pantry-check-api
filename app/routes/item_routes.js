@@ -69,6 +69,23 @@ router.post('/items', requireToken, (req, res, next) => {
 })
 
 // UPDATE(PATCH /items/:id)
+router.patch('/items/:id', requireToken, (req, res, next) => {
+  const id = req.params.id
+  delete req.body.item.owner
+
+  console.log('id is ', id)
+  console.log('owner is ', req.user._id)
+  console.log('item is ', req.body.item)
+
+  Item.findOne({
+    _id: id,
+    owner: req.user._id
+  })
+    .then(handle404)
+    .then(item => item.updateOne(req.body.item))
+    .then(() => res.sendStatus(204))
+    .catch(next)
+})
 
 // DESTROY(DELETE /items/id)
 router.delete('/items/:id', requireToken, (req, res, next) => {
