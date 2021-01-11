@@ -13,11 +13,11 @@ const customErrors = require('../../lib/custom_errors')
 // sends a 404 when a non-existent document is requested.
 const handle404 = customErrors.handle404
 
-// sends 401 when a user tries to modify another user's item
-const requireOwnership = customErrors.requireOwnership
-
-// middleware that removes blank fields in req.body
-const removeBlanks = require('../../lib/remove_blank_fields')
+// // sends 401 when a user tries to modify another user's item
+// const requireOwnership = customErrors.requireOwnership
+//
+// // middleware that removes blank fields in req.body
+// const removeBlanks = require('../../lib/remove_blank_fields')
 
 // token must be passed for the route to be available, sets req.user, use it as the second argument
 const requireToken = passport.authenticate('bearer', { session: false })
