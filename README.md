@@ -37,6 +37,11 @@ Version 1 is focused on the basic Authorization of the user, and the basic resou
 
 https://github.com/mrohrba4/pantry-check-client
 
+### Links to both deployed sites.
+
+Front-end: https://mrohrba4.github.io/pantry-check-client/
+API: https://intense-mesa-05206.herokuapp.com/
+
 ### Wireframes:
 
 [pantryCheck ERD](https://imgur.com/a/QtqMK9j)
