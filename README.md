@@ -33,7 +33,10 @@ Version 1 is focused on the basic Authorization of the user, and the basic resou
 - A "Stores" branch, where you can add your favorite and most visited stores.
 - A "Recipes" branch, where you can input, view, edit your own recipes and the ability to see if you can make that meal with the items you have.
 
+### Link to front-end client
+
+https://github.com/mrohrba4/pantry-check-client
 
 ### Wireframes:
 
-[pantryCheck ERD] (https://imgur.com/a/QtqMK9j)
+[pantryCheck ERD](https://imgur.com/a/QtqMK9j)
